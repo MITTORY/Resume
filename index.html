@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <div class="container" id="resume">
+        <div class="left-column">
+            <img src="Images/image.jpg" alt="Абзалимов Айдар Амирович">
+            <div class="info">
+                <strong>Абзалимов Айдар Амирович</strong><br>
+                <span>Техник-технолог</span>
+            </div>
+            <div>
+                <h2><i class="fas fa-address-book"></i> КОНТАКТЫ</h2>
+                <p><i class="fas fa-phone"></i> <strong>Телефон:</strong> +79224131238</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> novo1233@mail.ru</p>
+    
+                <h2>ЖЕЛАЕМАЯ ЗАРПЛАТА</h2>
+                <p>Не указано</p>
+                <p><strong>Тип занятости:</strong> Полная занятость</p>
+                <p><strong>График работы:</strong> Полный день</p>
+    
+                <h2><i class="fas fa-language"></i> ЯЗЫКИ</h2>
+                <p><strong>Английский:</strong> Технический</p>
+    
+                <h2><i class="fas fa-laptop-code"></i> КОМПЬЮТЕРНЫЕ НАВЫКИ</h2>
+                <p><strong>Офисные программы:</strong> Microsoft Word, Excel, Power Point</p>
+                <p><strong>Разработка:</strong> Visual Studio, C/C#, C++, WPF, WinForms, HTML + CSS, Python</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2><i class="fas fa-user"></i> ЛИЧНАЯ ИНФОРМАЦИЯ</h2>
+            <p><strong>Гражданство:</strong> Российская Федерация</p>
+            <p><strong>Образование:</strong> Высшее</p>
+            <p><strong>Дата рождения:</strong> 1 июля 2002 (22 года)</p>
+            <p><strong>Пол:</strong> Мужской</p>
+            <p><strong>Семейное положение:</strong> Женат</p>
+
+            <h2><i class="fas fa-briefcase"></i> ОПЫТ РАБОТЫ</h2>
+            <p><strong>Место работы:</strong> ПУ "СургутАСУнефть" ПАО "СургутНефтегаз"</p>
+            <p><strong>Период работы:</strong> апрель 2024 - май 2024</p>
+            <p><strong>Должность:</strong> Техник-технолог</p>
+            <p><strong>Обязанности:</strong> Производственное управление по наладке и техническому обслуживанию автоматизированных систем управления "СургутАСУнефть"/Комплекс сопровождения программного обеспечения/Отдел интерфейсов и аналитики.</p><br>
+
+            <p><strong>Место работы:</strong> ООО "СПП"</p>
+            <p><strong>Период работы:</strong> сентябрь 2020 - апрель 2021</p>
+            <p><strong>Должность:</strong> Работник предприятия быстрого обслуживания</p>
+            <p><strong>Обязанности:</strong> Сборка и выдача заказов, общение с клиентами.</p><br>
+
+            <h2><i class="fas fa-graduation-cap"></i> ОБРАЗОВАНИЕ</h2>
+            <p><strong>Учебное заведение:</strong> Сургутский государственный университет</p>
+            <p><strong>Специальность:</strong> Информатика и вычислительная техника (Информационные системы и технологии)</p>
+            <p><strong>Год окончания:</strong> 2025 (очная форма обучения)</p>
+
+            <h2><i class="fas fa-info-circle"></i> ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</h2>
+            <p><strong>Водительские права:</strong> Категории B, М</p>
+            <p><strong>Хобби:</strong> Пауэрлифтинг, плавание, практика в создании приложений на языке С# (WPF, WinForms), создание сайтов.</p>
+            <p><strong>Личные качества:</strong> Отсутствие вредных привычек, пунктуальность, самостоятельность, ответственность, коммуникабельность, быстрая обучаемость, усидчивость.</p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="window.print()" class="print-button">Печать</button>
+        <button onclick="exportToPDF()" class="export-button">Экспорт в PDF</button>
+    </div>
+
+    <script>
+        function exportToPDF() {
+            const element = document.getElementById("resume");
+            const opt = {
+                margin: 10,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Скрываем кнопки перед экспортом
+            document.querySelector('.buttons').style.display = 'none';
+
+            // Используем библиотеку html2pdf
+            html2pdf().from(element).set(opt).save().then(() => {
+                // Показываем кнопки после экспорта
+                document.querySelector('.buttons').style.display = 'flex';
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
