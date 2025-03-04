@@ -80,13 +80,8 @@
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
-            // Скрываем кнопки перед экспортом
             document.querySelector('.buttons').style.display = 'none';
-
-            // Используем библиотеку html2pdf
             html2pdf().from(element).set(opt).save().then(() => {
-                // Показываем кнопки после экспорта
                 document.querySelector('.buttons').style.display = 'flex';
             });
         }
